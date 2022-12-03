@@ -1,1 +1,13 @@
-
+set serveroutput on
+DECLARE
+tot_emp number(2);
+BEGIN
+ SELECT count(*) into tot_emp from emp e join dept d on e.deptno = d.deptno where 
+e.deptno=20;
+ dbms_output.put_line('The employees in the department 20: '||TO_CHAR(tot_emp));
+ IF(tot_emp>=45) THEN
+ dbms_output.put_line('There are no vacancies in the dept 20');
+ ELSE
+ dbms_output.put_line('There are some vacancies in the dept 20');
+ END IF;
+END;
